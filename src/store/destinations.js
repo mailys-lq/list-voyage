@@ -4,8 +4,7 @@ const destinations = {
     namespaced: true,
     state() {
       return {
-        destinations: {
-        }, 
+        destinations: {}, 
         url : 'https://listevoyage-eddc5-default-rtdb.europe-west1.firebasedatabase.app/Destination',
       };
     },

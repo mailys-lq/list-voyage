@@ -4,6 +4,7 @@
         v-for="(destination, index) in getDestinations" :key="index"
         :ville = destination.ville
         :pays = destination.pays
+        :id = index
         ></destination>
         <button @click="getDestinationsBdd">Test</button>
     </div>
@@ -20,7 +21,7 @@ export default {
     mounted() {
         console.log(`At this point, vm.$el has been created and el has been replaced.`);
         // console.log(this.$el.textContent) // Example component.
-        this.getDestinationsBdd
+        this.getDestinationsBdd()
     },
     computed:{
         ...mapGetters('destinations', ['getDestinations'])
