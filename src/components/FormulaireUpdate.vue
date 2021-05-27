@@ -34,9 +34,10 @@ export default {
   methods:{
 
     updateSouhait(id){
+      console.log(id);
       console.log(this.start); 
       console.log(this.end);
-      this.updateSouhait({dateStart: this.start, dateEnd: this.end, id: id})
+      // this.updateSouhait({dateStart: this.start, dateEnd: this.end, id: id})
     },
 
     ...mapActions('souhaits', ['updateSouhait']),

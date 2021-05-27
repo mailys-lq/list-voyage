@@ -36,15 +36,12 @@ export default {
     },
 
     ...mapActions('formulaire', ['addDestinationSouhait']),
-
-
-
   }
 }
 </script>
 <style scoped>
-  /* #formulaire {
+  #formulaire {
     display: block;
     background-color: red;
-  } */
+  }
 </style>

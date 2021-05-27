@@ -1,9 +1,10 @@
 <template>
     <div>
-        <destination
+        <destination class="list"
         v-for="(destination, index) in getDestinations" :key="index"
         :ville = destination.ville
         :pays = destination.pays
+        :image = destination.image
         :id = index
         ></destination>
         <button @click="getDestinationsBdd">Test</button>
@@ -32,5 +33,8 @@ export default {
 }
 </script>
 <style scoped>
-    
+    .list{
+      width: 100%;
+      margin: 10px auto; 
+    }
 </style>

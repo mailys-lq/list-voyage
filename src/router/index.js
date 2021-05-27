@@ -9,7 +9,7 @@ const router = new createRouter({
     { path: '/destinations', component: ListDestination, name: 'destinations'
     // , children: 
     //   [
-    //     { path: ':id/formulaire', component: Formulaire, name: 'formulaire', props: true}
+    //     { path: ':id/formulaire', component: FormulaireCreate, name: 'create', props: true}
     //   ] 
     },
     { path: '/formulaire-create', component: FormulaireCreate, name: 'create', props: true},

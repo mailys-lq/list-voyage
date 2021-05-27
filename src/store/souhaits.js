@@ -34,6 +34,7 @@ const souhaits = {
         const url = 'https://listevoyage-eddc5-default-rtdb.europe-west1.firebasedatabase.app/Souhait.json';
         const firebaseResponse = await axios.get(url);
         payload = {'url': url, 'souhait': firebaseResponse.data}
+        console.log(payload);
         context.commit('GET_DESTINATION_SOUHAIT', payload);
       },
 

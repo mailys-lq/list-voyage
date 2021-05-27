@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <h2>{{ pays }}</h2>
-    <p>{{id}}</p>
-    <span>{{ ville }}</span>
-    <span>{{ date_debut }}</span>
-    <span>{{ date_fin }}</span>
-    <button @click="deleteSouhait(id)">Delete</button>
-    <button @click="updateSouhait(id, date_debut, date_fin)">Update</button>
+  <div class="card">
+    <img :src="image" alt="">
+    <div class="card-right">
+      <h2>Pays de destinations : {{ pays }}</h2>
+      <span>Ville : {{ ville }}</span>
+      <p>Départ le : {{ date_debut }}</p>
+      <p>Retour le :{{ date_fin }}</p>
+      <button @click="deleteSouhait(id)">Delete</button>
+      <button @click="updateSouhait(id, date_debut, date_fin)">Update</button>
+    </div>
 
   </div>
 </template>
@@ -17,6 +19,7 @@ import { mapActions } from 'vuex';
   export default {
     props: {
       id: String, 
+      image: String,
       ville: String, 
       pays: String, 
       date_debut: String, 
@@ -35,6 +38,6 @@ import { mapActions } from 'vuex';
     }
   };
 </script>
-<style scoped>
+<style>
     
 </style>
