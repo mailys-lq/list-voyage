@@ -1,6 +1,6 @@
 <template>
   <div id="formulaire">
-    {{ id }}
+    {{ start }}
     <form @submit.prevent>
       <div>
         <label for="start">Date de debut du voyage</label>
@@ -14,7 +14,7 @@
         <label for="nb_person">Nombre de personnes</label>
         <input v-model.trim="nb_person" type="number" id="nb_person" name="nb_person">
       </div>
-      <button type="submit" @click="addDestination(id)">Valider</button>
+      <button type="submit" @click="addOrUpdateDestination(id)">Valider</button>
     </form>
     
   </div>
@@ -30,7 +30,10 @@ export default {
     }
   },
   mounted() {
-    
+    // if(this.update) {
+      this.start = this.date_debut;
+      this.end = this.date_fin;
+      console.log(this.start)
   },
   props: {
     id: String,
@@ -42,15 +45,17 @@ export default {
 
   methods:{
 
-    addDestination(id){
-      // if(this.update) {
-      //   this.updateSouhait({
-      //     dateStart: this.start,
-      //     dateEnd: this.end, 
-      //     nbPerson: this.nb_person,  
-      //     id: id})
+    addOrUpdateDestination(id){
+      if(this.date_debut && this.date_fin) {
+        this.updateSouhait({
+          dateStart: this.start,
+          dateEnd: this.end, 
+          nbPerson: this.nb_person,  
+          id: id
+        })
+        console.log('update');
 
-      // } else {
+      } else {
         console.log(this.start); 
         console.log(this.end);
         console.log(this.nb_person); 
@@ -58,15 +63,18 @@ export default {
           dateStart: this.start, 
           dateEnd: this.end, 
           nbPerson: this.nb_person, 
-          id: id})
+          id: id
+        })
+        console.log('add');
+
         this.$router.push({ name: 'souhaits'});
 
-      // }
+      }
       
     },
 
     ...mapActions('formulaire', ['addDestinationSouhait']),
-    ...mapActions('souhait', ['updateSouhait']),
+    ...mapActions('souhaits', ['updateSouhait']),
 
   }
 }

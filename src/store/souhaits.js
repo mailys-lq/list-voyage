@@ -11,7 +11,13 @@ const souhaits = {
     getters: {
       getSouhaits(state) {
         return state.souhaits
-      } 
+      },
+
+      getSouhait(state){
+        console.log(state.souhait)
+        return state.souhait;
+
+      }
     },
 
     mutations: {
@@ -77,7 +83,7 @@ const souhaits = {
           const url = 'https://listevoyage-eddc5-default-rtdb.europe-west1.firebasedatabase.app/Souhait';
           payload = {'date_debut': payload.dateStart, 'date_fin': payload.dateEnd}
           console.log(payload);
-          const response = await axios.patch(`${url}/${id}.json`, payload);
+          const response = await axios.put(`${url}/${id}.json`, payload);
           console.log(response); 
           if(response.statusText !== 'OK') {
             console.log('erreur');
@@ -98,7 +104,7 @@ const souhaits = {
         console.log('showDetail',payload)
         const firebaseResponse = await axios.get(`${url}/${payload.id}.json`);
         console.log(firebaseResponse);
-        payload = {'id': payload.id, 'destination': firebaseResponse.data}
+        payload = {'id': payload.id, 'souhait': firebaseResponse.data}
         console.log(payload);
         context.commit('SHOW_SOUHAIT', payload);
       }

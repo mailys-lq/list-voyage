@@ -1,39 +1,39 @@
 <template>
 
-  <div class="card" v-if="getDestination.destination">
-    <img :src="getDestination.destination.image" alt="">
+  <div class="card">
+    <img :src="image" alt="">
     <div class=card-right>
-      {{ getDestination.destination.id}}
-      <h2>{{ getDestination.destination.pays }}</h2>
-      <span>{{ getDestination.destination.ville }}</span>
-      <p>{{ getDestination.destination.description }}</p>
-      <span>{{ getDestination.destination.prix }}</span>
-      <span>{{ getDestination.destination.nb_person }}</span>
+      
+      <h2>{{ pays }}</h2>
+      <span>{{ ville }}</span>
+      <p>{{ description }}</p>
+      <span>{{ prix }}</span>
+      <span>{{ nb_person }}</span>
 
-      <formulaire :id = getDestination.id
+      <formulaire :id = id
       :date_debut = date_debut
       :date_fin = date_fin
-      :update = update></formulaire>
+      :nb_person = nb_person></formulaire>
     </div>
 
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
+// import { mapActions, mapGetters } from 'vuex';
 import Formulaire from './Formulaire.vue';
 
 export default {
-  mounted() {
-    if(this.date_debut && this.date_fin) {
-      console.log('destination detail')
-      this.showSouhait({id: this.id})
+  // mounted() {
+  //   if(this.date_debut && this.date_fin) {
+  //     console.log('destination detail')
+  //     this.showSouhait({id: this.id})
 
-    } else {
-      console.log(this.id);
-      const id = this.id;
-      this.showDestination({id})
-    }
-  },
+  //   } else {
+  //     console.log(this.id);
+  //     const id = this.id;
+  //     this.showDestination({id})
+  //   }
+  // },
   components:{
     Formulaire
   },
@@ -42,17 +42,23 @@ export default {
     date_debut: String, 
     date_fin: String, 
     update: Boolean,
+    pays: String,
+    prix: String, 
+    image: String, 
+    ville: String, 
+    nb_person: Number, 
+    description: String,
   }, 
   methods: {
     // goToForm(id, formulaire, image) {
     //   this.$router.push({ name: 'destination', params: { formulaire : formulaire, id: id, image: image }});
     // },
-    ...mapActions('destinations', ['showDestination']),
-    ...mapActions('souhaits', ['showSouhait'])
+    // ...mapActions('destinations', ['showDestination']),
+    // ...mapActions('souhaits', ['showSouhait'])
 
   }, 
   computed:{
-    ...mapGetters('destinations', ['getDestination'])
+    // ...mapGetters('destinations', ['getDestination'])
   } 
   };
 </script>
