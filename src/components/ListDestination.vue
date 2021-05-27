@@ -5,6 +5,8 @@
         :ville = destination.ville
         :pays = destination.pays
         :image = destination.image
+        :description = destination.description
+        :prix = destination.prix
         :id = index
         ></destination>
         <button @click="getDestinationsBdd">Test</button>

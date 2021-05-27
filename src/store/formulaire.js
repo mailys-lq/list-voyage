@@ -26,7 +26,15 @@ const formulaire = {
         const urlStore = 'https://listevoyage-eddc5-default-rtdb.europe-west1.firebasedatabase.app/Souhait.json';
         console.log(payload.dateStart); 
         console.log(payload.dateEnd);
-        payload = { 'pays': firebaseResponse.data.pays, 'ville': firebaseResponse.data.ville, 'image': firebaseResponse.data.image, 'date_debut': payload.dateStart, 'date_fin': payload.dateEnd}
+        payload = { 
+          'pays': firebaseResponse.data.pays, 
+          'ville': firebaseResponse.data.ville, 
+          'image': firebaseResponse.data.image, 
+          'prix': firebaseResponse.data.prix, 
+          'description': firebaseResponse.data.description, 
+          'date_debut': payload.dateStart, 
+          'date_fin': payload.dateEnd
+        }
 
         try{
           // On ajoute les données dans la base de donnée 

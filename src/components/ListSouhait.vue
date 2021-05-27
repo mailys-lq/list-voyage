@@ -7,6 +7,8 @@
         :date_debut = souhait.date_debut
         :date_fin = souhait.date_fin
         :image = souhait.image
+        :prix = souhait.prix
+        :description = souhait.description
         :id = index
         ></souhait>
         <button @click="getDestinationsSouhaitBdd">Test</button>

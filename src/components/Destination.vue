@@ -4,6 +4,8 @@
     <div class=card-right>
       <h2>{{ pays }}</h2>
       <span>{{ ville }}</span>
+      <p>{{ description }}</p>
+      <span>{{ Prix }}</span>
       <button @click="goToForm(id)">Go to form</button>
     </div>
 
@@ -15,6 +17,8 @@
   export default {
     props: {
       image: String, 
+      description: String, 
+      prix: Number, 
       id: String, 
       ville: String, 
       pays: String, 
