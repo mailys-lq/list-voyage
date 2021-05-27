@@ -19,6 +19,10 @@ import { mapActions } from 'vuex';
   // import Name from '@/components/Name.vue';
   
   export default {
+
+    mounted(){
+      this.getDestinationsSouhaitBdd()
+    },
     props: {
       id: String, 
       image: String,
@@ -32,13 +36,14 @@ import { mapActions } from 'vuex';
     methods: {
       deleteSouhait(id) {
         this.deleteSouhait({id: id}); 
+
       }, 
 
       updateSouhait(id, date_debut, date_fin) {
-        this.$router.push({ name: 'update', params: { id, date_debut, date_fin }});
+        this.$router.push({ name: 'souhait_detail', params: { id: id, date_debut: date_debut, date_fin: date_fin, update: true }});
       }, 
 
-      ...mapActions('souhaits', ['deleteSouhait'])
+      ...mapActions('souhaits', ['deleteSouhait', 'getDestinationsSouhaitBdd'])
     }
   };
 </script>

@@ -4,7 +4,8 @@ const souhaits = {
     namespaced: true,
     state() {
       return{
-        souhaits:{}
+        souhaits:{}, 
+        souhait:{}, 
       }
     },
     getters: {
@@ -21,12 +22,18 @@ const souhaits = {
 
         DELETE_SOUHAIT(state, payload) {
           console.log(payload); 
+          // state.souhait.$forceUpdate();
           return state.souhaits = payload;
         },
 
         UPDATE_SOUHAIT(state, payload) {
           console.log(payload); 
           return state.souhaits = payload;
+        },
+
+        SHOW_SOUHAIT(state, payload){
+          console.log(payload);
+          return state.souhait = payload;
         }
     },
     actions: {
@@ -54,6 +61,8 @@ const souhaits = {
           console.log('coucou')
           payload = {'souhait': response.data}
           context.commit('DELETE_SOUHAIT', payload);
+          context.dispatch('getDestinationsSouhaitBdd', payload)
+
 
         } catch(error) {
           alert(error.message);
@@ -83,6 +92,16 @@ const souhaits = {
           alert(error.message);
         }
       },
+
+      async showSouhait(context, payload){
+        const url = 'https://listevoyage-eddc5-default-rtdb.europe-west1.firebasedatabase.app/Souhait';
+        console.log('showDetail',payload)
+        const firebaseResponse = await axios.get(`${url}/${payload.id}.json`);
+        console.log(firebaseResponse);
+        payload = {'id': payload.id, 'destination': firebaseResponse.data}
+        console.log(payload);
+        context.commit('SHOW_SOUHAIT', payload);
+      }
     },
     
   }

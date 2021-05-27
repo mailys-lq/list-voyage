@@ -4,7 +4,7 @@
       <div>
         <label for="start">Date de debut du voyage</label>
         {{date_debut}}
-        <input  v-model.trim="start" type="date" id="start" name="start">
+        <input  v-model.trim="start" type="date" id="start" name="start" >
       </div>
       <div>
         <label for="end">Date de fin du voyage</label>
@@ -19,7 +19,7 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
-  date(){
+  data(){
     return{
       start : '', 
       end : '',

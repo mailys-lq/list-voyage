@@ -5,16 +5,17 @@
       <h2>{{ pays }}</h2>
       <span>{{ ville }}</span>
       <p>{{ description }}</p>
-      <span>{{ Prix }}</span>
-      <button @click="goToForm(id)">Go to form</button>
+      <span>{{ prix }}</span>
+      {{ id }}
+      <button @click="goToForm(id)">Voir</button>
     </div>
 
   </div>
 </template>
 <script>
-  // import Name from '@/components/Name.vue';
   
   export default {
+  
     props: {
       image: String, 
       description: String, 
@@ -23,10 +24,10 @@
       ville: String, 
       pays: String, 
     }, 
-    methods: {
-      goToForm(id) {
-        this.$router.push({ name: 'create', params: { id }});
 
+    methods: {
+      goToForm(id) { 
+        this.$router.push({ name: 'destination_detail', params: { id: id, }});
       }
     }
   };

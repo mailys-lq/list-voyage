@@ -26,6 +26,7 @@ const formulaire = {
         const urlStore = 'https://listevoyage-eddc5-default-rtdb.europe-west1.firebasedatabase.app/Souhait.json';
         console.log(payload.dateStart); 
         console.log(payload.dateEnd);
+        console.log(payload.nbPerson);
         payload = { 
           'pays': firebaseResponse.data.pays, 
           'ville': firebaseResponse.data.ville, 
@@ -33,7 +34,8 @@ const formulaire = {
           'prix': firebaseResponse.data.prix, 
           'description': firebaseResponse.data.description, 
           'date_debut': payload.dateStart, 
-          'date_fin': payload.dateEnd
+          'date_fin': payload.dateEnd,
+          'nb_person': payload.nbPerson,
         }
 
         try{
@@ -48,6 +50,8 @@ const formulaire = {
         }
         // payload = {'url': url, 'destinations': firebaseResponse.data}
         context.commit('ADD_SOUHAIT', payload);
+        context.dispatch('destination/getDestinationsBdd', null, { root: true })
+
       },
     },
     getters: {
