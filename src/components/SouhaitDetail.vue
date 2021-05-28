@@ -11,6 +11,7 @@
     :date_fin =  getSouhait.souhait.date_fin
     :nb_person =  getSouhait.souhait.nb_person
     :update = update
+    :id = id
     ></detail>
   </div>
 </template>

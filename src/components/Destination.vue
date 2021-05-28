@@ -33,25 +33,5 @@
   };
 </script>
 <style>
-  .card{
-    width: 80%; 
-    display: flex;
-    border: 1px solid grey;
-    border-radius: 25px;
-    margin: 5px; 
-  }
-
-  .card img{
-    width: 50%;
-    margin-right: 10px;
-    border-radius: 25px 0 0 25px;
-  }
-
-  .card-right{
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
+  
 </style>

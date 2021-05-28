@@ -11,8 +11,8 @@
         <input v-model.trim="end" type="date" id="end" name="end">
       </div>
       <div>
-        <label for="nb_person">Nombre de personnes</label>
-        <input v-model.trim="nb_person" type="number" id="nb_person" name="nb_person">
+        <label for="personNumber">Nombre de personnes</label>
+        <input v-model.trim="personNumber" type="number" id="personNumber" name="personNumber">
       </div>
       <button type="submit" @click="addOrUpdateDestination(id)">Valider</button>
     </form>
@@ -26,21 +26,27 @@ export default {
     return{
       start : '', 
       end : '',
-      nb_person : null, 
+      personNumber : null, 
     }
   },
   mounted() {
     // if(this.update) {
       this.start = this.date_debut;
       this.end = this.date_fin;
+      this.personNumber = this.nb_person;
+
       console.log(this.start)
+      console.log(this.end)
+      console.log(this.personNumber)
+
+      console.log('mount update')
   },
   props: {
     id: String,
     date_debut: String, 
     date_fin: String, 
+    nb_person: Number,
     update: Boolean,
-    // nb_person: Number,
   },
 
   methods:{
@@ -51,9 +57,11 @@ export default {
           dateStart: this.start,
           dateEnd: this.end, 
           nbPerson: this.nb_person,  
-          id: id
+          id: this.id
         })
+
         console.log('update');
+        this.$router.push({ name: 'souhaits'});
 
       } else {
         console.log(this.start); 

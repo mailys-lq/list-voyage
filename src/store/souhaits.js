@@ -78,12 +78,13 @@ const souhaits = {
       async updateSouhait(context, payload) {
         console.log(payload);
         try {
-          const id = payload; 
+          
+          const id = payload.id; 
           console.log(id); 
           const url = 'https://listevoyage-eddc5-default-rtdb.europe-west1.firebasedatabase.app/Souhait';
           payload = {'date_debut': payload.dateStart, 'date_fin': payload.dateEnd}
           console.log(payload);
-          const response = await axios.put(`${url}/${id}.json`, payload);
+          const response = await axios.patch(`${url}/${id}.json`, payload);
           console.log(response); 
           if(response.statusText !== 'OK') {
             console.log('erreur');
