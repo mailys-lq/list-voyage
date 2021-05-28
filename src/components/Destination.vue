@@ -13,9 +13,12 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
   
   export default {
-  
+    mounted(){
+        this.getDestinationsBdd()
+      },
     props: {
       image: String, 
       description: String, 
@@ -28,7 +31,9 @@
     methods: {
       goToForm(id) { 
         this.$router.push({ name: 'destination_detail', params: { id: id, }});
-      }
+      }, 
+
+      ...mapActions('destinations', ['getDestinationsBdd'])
     }
   };
 </script>

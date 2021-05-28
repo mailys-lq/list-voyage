@@ -31,6 +31,7 @@ export default {
   },
   mounted() {
     // if(this.update) {
+      console.log(this.update)
       this.start = this.date_debut;
       this.end = this.date_fin;
       this.personNumber = this.nb_person;
@@ -51,8 +52,9 @@ export default {
 
   methods:{
 
-    addOrUpdateDestination(id){
-      if(this.date_debut && this.date_fin) {
+    addOrUpdateDestination(){
+      if(this.update) {
+        console.log(this.update);
         this.updateSouhait({
           dateStart: this.start,
           dateEnd: this.end, 
@@ -64,14 +66,17 @@ export default {
         this.$router.push({ name: 'souhaits'});
 
       } else {
+        console.log(this.update);
+
         console.log(this.start); 
         console.log(this.end);
-        console.log(this.nb_person); 
+        console.log(this.personNumber); 
+        console.log(this.id)
         this.addDestinationSouhait({
           dateStart: this.start, 
           dateEnd: this.end, 
-          nbPerson: this.nb_person, 
-          id: id
+          nbPerson: this.personNumber, 
+          id: this.id
         })
         console.log('add');
 
@@ -81,7 +86,7 @@ export default {
       
     },
 
-    ...mapActions('formulaire', ['addDestinationSouhait']),
+    ...mapActions('destinations', ['addDestinationSouhait']),
     ...mapActions('souhaits', ['updateSouhait']),
 
   }

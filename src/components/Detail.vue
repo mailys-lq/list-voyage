@@ -2,18 +2,17 @@
 
   <div class="card">
     <img :src="image" alt="">
-    <div class=card-right>
-      
+    <div class=card-right>      
       <h2>{{ pays }}</h2>
       <span>{{ ville }}</span>
       <p>{{ description }}</p>
       <span>{{ prix }}</span>
       <span>{{ nb_person }}</span>
-
       <formulaire :id = id
       :date_debut = date_debut
       :date_fin = date_fin
-      :nb_person = nb_person></formulaire>
+      :nb_person = nb_person
+      :update = update></formulaire>
     </div>
 
   </div>
